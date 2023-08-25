@@ -78,22 +78,20 @@ final class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliverItemsWhen200WithItemsJson() {
         let (client, sut) = makeSUT()
 
-        let (item1, item1Json) = makeItem(id: UUID(),
+        let item1 = makeItem(id: UUID(),
                                           imageURL: URL(string: "https://a-valid-url.com")!)
 
 
-        let (item2, item2Json) = makeItem(id: UUID(),
+        let item2 = makeItem(id: UUID(),
                                           description: "a desctription",
                                           location: "a location",
                                           imageURL: URL(string: "https://another-url.com")!)
 
-        let jsonItems = [
-            "items": [item1Json, item2Json]
-        ]
+        let items = [item1.model, item2.model]
+        let jsonItems = [item1.json, item2.json]
 
-        expect(sut, completeWithResult: .success([item1, item2]), when: {
-            let json = try! JSONSerialization.data(withJSONObject: jsonItems)
-            client.complete(withStatusCode: 200, data: json)
+        expect(sut, completeWithResult: .success(items), when: {
+            client.complete(withStatusCode: 200, data: makeItemsJSON(jsonItems))
         })
     }
 
@@ -117,6 +115,12 @@ final class RemoteFeedLoaderTests: XCTestCase {
 
         return (item, json)
     }
+
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let jsonItems = ["items": items]
+        return try! JSONSerialization.data(withJSONObject: jsonItems)
+    }
+
     private func expect (_ sut: RemoteFeedLoader, completeWithResult result: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
         var capturedResults = [RemoteFeedLoader.Result]()
