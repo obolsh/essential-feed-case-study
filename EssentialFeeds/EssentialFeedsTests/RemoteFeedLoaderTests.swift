@@ -78,27 +78,14 @@ final class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliverItemsWhen200WithItemsJson() {
         let (client, sut) = makeSUT()
 
-        let item1 = FeedItem(id: UUID(),
-                             description: nil,
-                             location: nil,
-                             imageURL: URL(string: "https://a-valid-url.com")!)
+        let (item1, item1Json) = makeItem(id: UUID(),
+                                          imageURL: URL(string: "https://a-valid-url.com")!)
 
-        let item1Json = [
-            "id": item1.id.uuidString,
-            "image": item1.imageURL.absoluteString
-        ].compactMapValues { $0 }
 
-        let item2 = FeedItem(id: UUID(),
-                             description: "a desctription",
-                             location: "a location",
-                             imageURL: URL(string: "https://another-url.com")!)
-
-        let item2Json = [
-            "id": item2.id.uuidString,
-            "description": item2.description,
-            "location": item2.location,
-            "image": item2.imageURL.absoluteString
-        ].compactMapValues { $0 }
+        let (item2, item2Json) = makeItem(id: UUID(),
+                                          description: "a desctription",
+                                          location: "a location",
+                                          imageURL: URL(string: "https://another-url.com")!)
 
         let jsonItems = [
             "items": [item1Json, item2Json]
@@ -112,6 +99,24 @@ final class RemoteFeedLoaderTests: XCTestCase {
 
     // MARK: - Helpers
 
+    private func makeItem(id: UUID,
+                          description: String? = nil,
+                          location: String? = nil,
+                          imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
+        let item = FeedItem(id: id,
+                             description: description,
+                             location: location,
+                             imageURL: imageURL)
+
+        let json = [
+            "id": id.uuidString,
+            "description": description,
+            "location": location,
+            "image": imageURL.absoluteString
+        ].compactMapValues { $0 }
+
+        return (item, json)
+    }
     private func expect (_ sut: RemoteFeedLoader, completeWithResult result: RemoteFeedLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
 
         var capturedResults = [RemoteFeedLoader.Result]()
