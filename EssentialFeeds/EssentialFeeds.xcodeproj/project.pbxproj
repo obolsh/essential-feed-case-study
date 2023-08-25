@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA415D672A8AB5820054BA02 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA415D662A8AB5820054BA02 /* RemoteFeedLoader.swift */; };
 		DA70575E2A99504000826A87 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70575D2A99504000826A87 /* HTTPClient.swift */; };
+		DA7057602A9950F700826A87 /* FeedItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70575F2A9950F700826A87 /* FeedItemMapper.swift */; };
 		DA9BBB552A81924400332FAE /* EssentialFeeds.docc in Sources */ = {isa = PBXBuildFile; fileRef = DA9BBB542A81924400332FAE /* EssentialFeeds.docc */; };
 		DA9BBB5B2A81924400332FAE /* EssentialFeeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9BBB502A81924400332FAE /* EssentialFeeds.framework */; };
 		DA9BBB602A81924400332FAE /* EssentialFeedsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9BBB5F2A81924400332FAE /* EssentialFeedsTests.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		DA415D662A8AB5820054BA02 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		DA70575D2A99504000826A87 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		DA70575F2A9950F700826A87 /* FeedItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemMapper.swift; sourceTree = "<group>"; };
 		DA9BBB502A81924400332FAE /* EssentialFeeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9BBB532A81924400332FAE /* EssentialFeeds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeeds.h; sourceTree = "<group>"; };
 		DA9BBB542A81924400332FAE /* EssentialFeeds.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentialFeeds.docc; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				DA415D662A8AB5820054BA02 /* RemoteFeedLoader.swift */,
 				DA70575D2A99504000826A87 /* HTTPClient.swift */,
+				DA70575F2A9950F700826A87 /* FeedItemMapper.swift */,
 			);
 			path = "Feeds Api";
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				DA415D672A8AB5820054BA02 /* RemoteFeedLoader.swift in Sources */,
 				DA70575E2A99504000826A87 /* HTTPClient.swift in Sources */,
 				DA9BBB6D2A82202C00332FAE /* FeedLoader.swift in Sources */,
+				DA7057602A9950F700826A87 /* FeedItemMapper.swift in Sources */,
 				DA9BBB6B2A821F2D00332FAE /* FeedItem.swift in Sources */,
 				DA9BBB552A81924400332FAE /* EssentialFeeds.docc in Sources */,
 			);
