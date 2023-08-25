@@ -9,7 +9,7 @@ import Foundation
 
 public class RemoteFeedLoader {
 
-    private let client: HttpClient
+    private let client: HTTPClient
     private let url: URL
 
     public enum Error: Swift.Error {
@@ -22,7 +22,7 @@ public class RemoteFeedLoader {
         case failure(Error)
     }
 
-    public init(client: HttpClient, url: URL) {
+    public init(client: HTTPClient, url: URL) {
         self.client = client
         self.url = url
     }

@@ -138,7 +138,7 @@ final class RemoteFeedLoaderTests: XCTestCase {
         return (client, sut)
     }
 
-    private class HttpClientSpy : HttpClient {
+    private class HttpClientSpy : HTTPClient {
 
         var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
         var capturedUrls: [URL] {
