@@ -19,10 +19,12 @@ class URLSessionHTTPClient {
   struct UnexpectedResponseValues: Error {}
 
   func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
-    session.dataTask(with: url) { _, _, error in
+    session.dataTask(with: url) { data, response, error in
       if let error = error {
         completion(.failure(error))
-      } else {
+      } else if let data = data, data.count > 0, let response = response as? HTTPURLResponse {
+        completion(.success(data, response))
+      } else{
         completion(.failure(UnexpectedResponseValues()))
       }
     }.resume()
@@ -79,7 +81,29 @@ final class URLSessionHTTPClientTests: XCTestCase {
     XCTAssertNotNil(resultErrorFor(data: anyData(), response: nonHTTPURLResponse(), error: anyNSError()))
     XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyHTTPURLResponse(), error: anyNSError()))
     XCTAssertNotNil(resultErrorFor(data: anyData(), response: nonHTTPURLResponse(), error: nil))
-    XCTAssertNotNil(resultErrorFor(data: anyData(), response: anyHTTPURLResponse(), error: nil))
+
+  }
+
+  func test_getFromURL_expectDataWithResponse() {
+    let data = anyData()
+    let response = anyHTTPURLResponse()
+
+    URLProtocolStub.stub(data: data, response: response, error: nil)
+
+    let exp = expectation(description: "Waiting for success response")
+    makeSUT().get(from: anyURL()) { result in
+      switch result {
+      case let .success(receivedData, receivedResponse):
+        XCTAssertEqual(data, receivedData)
+        XCTAssertEqual(response.statusCode, receivedResponse.statusCode)
+        XCTAssertEqual(response.url, receivedResponse.url)
+      default:
+        XCTFail("Expected success response with data")
+      }
+      exp.fulfill()
+    }
+
+    wait(for: [exp], timeout: 1.0)
   }
 
   //MARK: - helpers
@@ -103,7 +127,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
   }
 
   private func anyHTTPURLResponse() -> HTTPURLResponse {
-    return HTTPURLResponse(url: anyURL(), statusCode: 1, httpVersion: nil, headerFields: nil)!
+    return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
   }
 
   private func nonHTTPURLResponse() -> URLResponse {
