@@ -18,6 +18,7 @@
 		DAD43D9D2A9FCC25000A70D7 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD43D9C2A9FCC25000A70D7 /* URLSessionHTTPClientTests.swift */; };
 		DAE18D722A8425B200835CE7 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE18D712A8425B200835CE7 /* RemoteFeedLoaderTests.swift */; };
 		DAE7333B2AA1240500E79116 /* XCTestCase+MemmoryLeakHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7333A2AA1240500E79116 /* XCTestCase+MemmoryLeakHelper.swift */; };
+		DAE7333D2AA1438E00E79116 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7333C2AA1438E00E79116 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		DAD43D9C2A9FCC25000A70D7 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		DAE18D712A8425B200835CE7 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		DAE7333A2AA1240500E79116 /* XCTestCase+MemmoryLeakHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemmoryLeakHelper.swift"; sourceTree = "<group>"; };
+		DAE7333C2AA1438E00E79116 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				DA415D662A8AB5820054BA02 /* RemoteFeedLoader.swift */,
 				DA70575D2A99504000826A87 /* HTTPClient.swift */,
 				DA70575F2A9950F700826A87 /* FeedItemMapper.swift */,
+				DAE7333C2AA1438E00E79116 /* URLSessionHTTPClient.swift */,
 			);
 			path = "Feeds Api";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE7333D2AA1438E00E79116 /* URLSessionHTTPClient.swift in Sources */,
 				DA415D672A8AB5820054BA02 /* RemoteFeedLoader.swift in Sources */,
 				DA70575E2A99504000826A87 /* HTTPClient.swift in Sources */,
 				DA9BBB6D2A82202C00332FAE /* FeedLoader.swift in Sources */,
