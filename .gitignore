@@ -91,4 +91,6 @@ fastlane/test_output
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
-# End of https://www.gitignore.io/api/swift,xcode
+# End of https://www.gitignore.io/api/swift,
+.DS_Store
+EssentialFeeds/EssentialFeeds.xcodeproj/xcshareddata/
