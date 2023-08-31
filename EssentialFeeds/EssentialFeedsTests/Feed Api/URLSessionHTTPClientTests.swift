@@ -58,7 +58,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
   }
 
   func test_getFromURL_failWithError() {
-    let expectedError = NSError(domain: "network error", code: 1)
+    let expectedError = anyNSError()
     guard let error = resultErrorFor(data: nil, response: nil, error: expectedError) as? NSError else {
       XCTFail("Error expected \(expectedError)")
       return
