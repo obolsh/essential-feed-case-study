@@ -92,7 +92,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
   }
 
   private func anyData() -> Data {
-    return Data(bytes: "anyData".utf8)
+    return Data(_: "anyData".utf8)
   }
 
   private func anyNSError() -> NSError {
