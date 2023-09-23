@@ -108,7 +108,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
   }
 
   private func resultErrorFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #file, line: UInt = #line) -> Error? {
-    var result = resultFor(data: data, response: response, error: error, file: file, line: line)
+    let result = resultFor(data: data, response: response, error: error, file: file, line: line)
 
     switch result {
     case let .failure(errorReceived):
@@ -122,7 +122,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
   private typealias SuccessResult = (data: Data, response: HTTPURLResponse)
 
   private func resultSuccessFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #file, line: UInt = #line) -> SuccessResult? {
-    var result = resultFor(data: data, response: response, error: error, file: file, line: line)
+    let result = resultFor(data: data, response: response, error: error, file: file, line: line)
 
     switch result {
     case let .success(data, response):
